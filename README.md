@@ -1,3 +1,6 @@
+ 
+
+
 # path-rooter
 
 Set of utilities that combine glob patterns and node (fresh) imports from a root path.
@@ -6,12 +9,12 @@ Set of utilities that combine glob patterns and node (fresh) imports from a root
 
 This tool can do 6 things via 6 methods:
 
-   - `rooter.resolve`: Build paths from a root path and the parts.
-   - `rooter.require`: Import files from a root path and the parts.
-   - `rooter.execute`: Execute files from a root path and the parts.
-   - `rooter.find`: Find files from a root path and a set of `glob` patterns.
-   - `rooter.findAndRequire`: Import files from a root path and a set of `glob` patterns.
-   - `rooter.findAndExecute`: Execute files from a root path and a set of `glob` patterns.
+  - `rooter.resolve`: Build paths from a root path and the parts.
+  - `rooter.require`: Import files from a root path and the parts.
+  - `rooter.execute`: Execute files from a root path and the parts.
+  - `rooter.find`: Find files from a root path and a set of `glob` patterns.
+  - `rooter.findAndRequire`: Import files from a root path and a set of `glob` patterns.
+  - `rooter.findAndExecute`: Execute files from a root path and a set of `glob` patterns.
 
 ## Installation
 
@@ -65,12 +68,12 @@ const freshDataSet = rooter.findAndExecute("/subpath/to/somefile.js");
 ## API Reference
 
 
+
+
  
 
 
-----
-
-### Rooter = require("rooter")
+#### Rooter = require("rooter")
 
 Class of `rooter`.
 
@@ -82,11 +85,13 @@ Class of `rooter`.
 
 -----
 
-### rooter = new Rooter($directory)
+#### rooter = new Rooter($directory)
 
 Constructor of `rooter` instances.
 
 Defines the `rooter.ROOT` path from which the other routes will be built.
+
+Accepts a string.
 
 
 
@@ -96,7 +101,7 @@ Defines the `rooter.ROOT` path from which the other routes will be built.
 
 -----
 
-### Rooter.create($directory)
+#### Rooter.create($directory)
 
 The same as the constructor.
 
@@ -108,10 +113,14 @@ The same as the constructor.
 
 -----
 
-### rooter.resolve(...$routes)
+#### rooter.resolve(...$routes)
 
 Method that builds a route from its parts and starting from the `rooter.ROOT` path.
 
+It accepts a list of strings that will be merged and appended to `rooter.ROOT`.
+
+Returns a string with the resultant file.
+
 
 
 
@@ -120,10 +129,14 @@ Method that builds a route from its parts and starting from the `rooter.ROOT` pa
 
 -----
 
-### rooter.find(...$patterns)
+#### rooter.find(...$patterns)
 
 Method that returns the paths of the files found from the provided `glob` patterns and starting from the `rooter.ROOT` path.
 
+It accepts a list of strings and arrays. Each string will be used as globby pattern and appended to `rooter.ROOT` to make the search.
+
+Returns a list of strings with the files found.
+
 
 
 
@@ -132,10 +145,14 @@ Method that returns the paths of the files found from the provided `glob` patter
 
 -----
 
-### rooter.require(...$route)
+#### rooter.require(...$route)
 
 Method that imports one module (using the usual cache of `node`) from the parts of its path and from the `rooter.ROOT` path.
 
+It accepts a list of strings. Each string will be merged and appended to `rooter.ROOT` to create the new path, and that path is imported.
+
+Returns the module.
+
 
 
 
@@ -144,10 +161,12 @@ Method that imports one module (using the usual cache of `node`) from the parts 
 
 -----
 
-### rooter.resolve(...$route)
+#### rooter.execute(...$route)
 
 Method that imports one module (avoiding the usual cache of `node`) from the parts of its path and from the `rooter.ROOT` path.
 
+It works the same as `require`, but it will avoid nodejs default caching.
+
 
 
 
@@ -156,10 +175,12 @@ Method that imports one module (avoiding the usual cache of `node`) from the par
 
 -----
 
-### rooter.resolve(...$patterns)
+#### rooter.findAndRequire(...$patterns)
 
 Method that first finds all the files matching the `glob` patterns provided from the `rooter.ROOT` path, and then imports them (using the usual cache of `node`).
 
+It works the same as `find` and `require` combined. So, it returns a list (with what modules returned).
+
 
 
 
@@ -168,13 +189,16 @@ Method that first finds all the files matching the `glob` patterns provided from
 
 -----
 
-### rooter.resolve(...$patterns)
+#### rooter.findAndExecute(...$patterns)
 
 Method that first finds all the files matching the `glob` patterns provided from the `rooter.ROOT` path, and then imports them (avoiding the usual cache of `node`).
 
+It works the same as `find` and `execute` combined. So, it returns a list (with what modules returned).
 
 
 
+
+ 
 
 
 ## Test
@@ -192,4 +216,7 @@ Method that first finds all the files matching the `glob` patterns provided from
 ## License
 
 [WTFPL](https://es.wikipedia.org/wiki/WTFPL). 100% free.
-# Read this file
+
+
+
+
