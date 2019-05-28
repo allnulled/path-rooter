@@ -1,8 +1,8 @@
 {
-  "name": "rooter",
+  "name": "path-rooter",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Set of utilities that combine glob patterns and node (fresh) imports from a root path.",
+  "main": "src/path-rooter.js",
   "directories": {
     "test": "test"
   },
@@ -15,7 +15,7 @@
   "devDependencies": {},
   "scripts": {
     "docs": "javadoc -i src/rooter.js -f markdown -o README.md",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/*.test.js"
   },
   "repository": {
     "type": "git",
