@@ -2,7 +2,7 @@
   "name": "path-rooter",
   "version": "1.0.0",
   "description": "Set of utilities that combine glob patterns and node (fresh) imports from a root path.",
-  "main": "src/path-rooter.js",
+  "main": "src/rooter.js",
   "directories": {
     "test": "test"
   },
